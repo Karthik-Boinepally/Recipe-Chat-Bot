@@ -2,7 +2,7 @@ import time
 import openai
 from openai.error import RateLimitError
 # Set your OpenAI API key
-openai.api_key = "Contact me for API Key or use yours"
+# openai.api_key = "Contact me for API Key or use yours"
 def get_gpt_answer_with_retry(question, context, retries=5):
     prompt = f"Question: {question}\n\nContext: {context}\n\nAnswer:"
     for i in range(retries):
