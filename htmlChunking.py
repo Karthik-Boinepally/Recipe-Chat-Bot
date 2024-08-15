@@ -28,10 +28,9 @@ def parse_html(url):
                 break
             content.append(sibling.get_text(strip=True))
 
-        # Combine the content list into a single string
+
         content_text = " ".join(content)
 
-        # Tokenize and chunk the content if it exceeds 256 tokens
         tokens = tokenizer.encode(content_text)
         chunks = []
         for i in range(0, len(tokens), 1000):
@@ -39,7 +38,7 @@ def parse_html(url):
             chunk_text = tokenizer.decode(chunk)
             chunks.append(chunk_text)
 
-        # Store the chunks in the dictionary under the heading
+
         content_dict[heading_text] = chunks
 
     with open('output.json', 'w') as json_file:
@@ -47,12 +46,9 @@ def parse_html(url):
     # Convert the dictionary to a JSON formatted string
     content_json = json.dumps(content_dict, indent=4)
 
-    # json_to_embeddings(content_json)
+
 
     return content_json
 
 
-# Example usage
-# url = 'https://www.bonappetit.com/recipe/chicken-piccata-2'
-# parsed_content = parse_html(url)
 
